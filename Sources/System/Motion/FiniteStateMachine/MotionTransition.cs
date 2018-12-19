@@ -7,6 +7,7 @@ namespace UniCraft.CharacterMechanism.System.Motion.FiniteStateMachine
     /// <summary>
     /// ScriptableObject to create transition for the motion state machine
     /// </summary>
+    [CreateAssetMenu(menuName = "UniCraft/Character/Transition")]
     public class MotionTransition : ScriptableObject
     {
         ///////////////////////////////
