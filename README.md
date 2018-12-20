@@ -61,7 +61,7 @@ System
 Motion
 
     - AMotionCondition
-        Base class to inherit in order to create a motion condition (e.g. AreDirectionalKeyPressed)
+        Base class to inherit in order to create a motion condition (e.g. IsJumpButtonPress)
     
     - AMotionState
         Base class to inherit in order to create a motion state (e.g. Walk)
