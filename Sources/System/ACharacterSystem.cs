@@ -1,13 +1,14 @@
-﻿using UniCraft.CharacterMechanism.System.Motion;
-using UniCraft.CharacterMechanism.System.Motion.FiniteStateMachine;
+﻿using UniCraft.CharacterMechanism.System.Motion.Information;
+using UniCraft.CharacterMechanism.System.Motion.StateMachine;
 using UnityEngine;
 
 namespace UniCraft.CharacterMechanism.System
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base Module to create a character system
+    /// Base module to manage the components of the character and a motion state machine
     /// </summary>
+    [DisallowMultipleComponent]
     public abstract class ACharacterSystem : MonoBehaviour
     {
         ///////////////////////////////
@@ -22,8 +23,8 @@ namespace UniCraft.CharacterMechanism.System
         ////////////////////////////
         ////////// Motion //////////
 
-        [SerializeField] protected MotionInput MotionInput = null;
-        [SerializeField] protected MotionStateMachine MotionStateMachine = null;
+        [SerializeField] private MotionInformation _motionInformation = null;
+        [SerializeField] private MotionStateMachine _motionStateMachine = null;
         
         //////////////////////////////
         ////////// Property //////////
@@ -37,7 +38,14 @@ namespace UniCraft.CharacterMechanism.System
         ////////////////////////////
         ////////// Motion //////////
         
-        public MotionInput GetMotionInput => MotionInput;
+        ////////// Input //////////
+        
+        public MotionInformation GetMotionInformation => _motionInformation;
+        
+        ////////// State //////////
+        
+        public AMotionState GetCurrentState => _motionStateMachine.GetCurrentState;
+        public AMotionState GetPreviousState => _motionStateMachine.GetPreviousState;
         
         ////////////////////////////
         ////////// Method //////////
@@ -47,9 +55,14 @@ namespace UniCraft.CharacterMechanism.System
         ////////// Callback //////////
 
         /// <summary>
-        /// Initialize all the components of the character
+        /// Initialize all the components
         /// </summary>
-        protected virtual void InitializeComponents()
+        protected abstract void InitializeComponents();
+        
+        /// <summary>
+        /// Load all the required components
+        /// </summary>
+        protected virtual void LoadComponents()
         {
             Animator = GetComponent<Animator>();
         }
@@ -59,19 +72,24 @@ namespace UniCraft.CharacterMechanism.System
 
         protected virtual void Awake()
         {
+            _motionStateMachine.Initialize();
+            LoadComponents();
             InitializeComponents();
-            MotionStateMachine.Initialize();
         }
 
+        protected virtual void Start()
+        {
+            _motionStateMachine.Start(this);
+        }
+        
         protected virtual void FixedUpdate()
         {
-            MotionStateMachine.Execute(this, MotionInput);
+            _motionStateMachine.Execute(_motionInformation);
         }
 
         protected virtual void Update()
         {
-            MotionStateMachine.UpdateCurrentState(this, MotionInput);
+            _motionStateMachine.Update(this, _motionInformation);
         }
-        
     }
 }

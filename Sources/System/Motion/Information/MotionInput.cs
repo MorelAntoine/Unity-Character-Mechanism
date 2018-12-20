@@ -1,10 +1,10 @@
 ﻿using UniCraft.AttributeCollection;
 using UnityEngine;
 
-namespace UniCraft.CharacterMechanism.System.Motion
+namespace UniCraft.CharacterMechanism.System.Motion.Information
 {
     /// <summary>
-    /// Class to manage motion input in order to control the character
+    /// Class to contain the input information for the motion state machine and the behaviour
     /// </summary>
     [global::System.Serializable]
     public sealed class MotionInput
@@ -12,17 +12,7 @@ namespace UniCraft.CharacterMechanism.System.Motion
         ///////////////////////////////
         ////////// Attribute //////////
         ///////////////////////////////
-
-        ///////////////////////////////////
-        ////////// Configuration //////////
-
-        [Header("Configuration")]
-        [DisableInInspector] public bool AdaptToNavMesh = false;
         
-        /////////////////////////////////
-        ////////// Information //////////
-        
-        [Header("Information")]
         [DisableInInspector] public Vector3 MovementDirection = Vector3.zero;
         
         ////////////////////////////

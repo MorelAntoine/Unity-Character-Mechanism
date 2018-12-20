@@ -1,7 +1,8 @@
 ﻿using System.Linq;
+using UniCraft.CharacterMechanism.System.Motion.Information;
 using UnityEngine;
 
-namespace UniCraft.CharacterMechanism.System.Motion.FiniteStateMachine
+namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
 {
     /// <inheritdoc/>
     /// <summary>
@@ -27,9 +28,10 @@ namespace UniCraft.CharacterMechanism.System.Motion.FiniteStateMachine
         /// <summary>
         /// Return the resulting state based on the simulation
         /// </summary>
-        public AMotionState Simulate(ACharacterSystem cs, MotionInput mi)
+        public AMotionState Simulate(ACharacterSystem characterSystem, MotionInput motionInput)
         {
-            return (_conditions.All(condition => condition.IsConditionMet(cs, mi)) ? _stateOnSuccess : _stateOnFailure);
+            return (_conditions.All(condition => condition.IsConditionMet(characterSystem, motionInput))
+                ?_stateOnSuccess : _stateOnFailure);
         }
     }
 }

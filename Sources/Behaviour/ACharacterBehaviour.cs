@@ -1,12 +1,12 @@
 ﻿using UniCraft.CharacterMechanism.System;
-using UniCraft.CharacterMechanism.System.Motion;
+using UniCraft.CharacterMechanism.System.Motion.Information;
 using UnityEngine;
 
 namespace UniCraft.CharacterMechanism.Behaviour
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base Module to create character behaviour
+    /// Base module to define the behaviour of a character
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(ACharacterSystem))]
@@ -16,7 +16,7 @@ namespace UniCraft.CharacterMechanism.Behaviour
         ////////// Attribute //////////
         ///////////////////////////////
 
-        protected ACharacterSystem CharacterSystem = null;
+        private ACharacterSystem _characterSystem = null;
 
         ////////////////////////////
         ////////// Method //////////
@@ -28,25 +28,25 @@ namespace UniCraft.CharacterMechanism.Behaviour
         /// <summary>
         /// Initialize the behaviour
         /// </summary>
-        protected abstract void Initialize(MotionInput mi);
+        protected abstract void Initialize(ACharacterSystem characterSystem, MotionConfiguration motionConfiguration);
         
         /// <summary>
-        /// Update the motion input in order to manipulate the character
+        /// Update the motion input in order to move the character
         /// </summary>
-        protected abstract void UpdateMotionInput(MotionInput mi);
+        protected abstract void UpdateMotionInput(MotionInput motionInput);
 
         ////////////////////////////////////////////
         ////////// MonoBehaviour Callback //////////
 
         protected virtual void Awake()
         {
-            CharacterSystem = GetComponent<ACharacterSystem>();
-            Initialize(CharacterSystem.GetMotionInput);
+            _characterSystem = GetComponent<ACharacterSystem>();
+            Initialize(_characterSystem, _characterSystem.GetMotionInformation.GetMotionConfiguration);
         }
         
         protected virtual void Update()
         {
-            UpdateMotionInput(CharacterSystem.GetMotionInput);
+            UpdateMotionInput(_characterSystem.GetMotionInformation.GetMotionInput);
         }
     }
 }

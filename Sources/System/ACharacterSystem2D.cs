@@ -6,7 +6,7 @@ namespace UniCraft.CharacterMechanism.System
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base Module to create a 2D character system
+    /// Base module to manage the 2D components of the character
     /// </summary>
     public abstract class ACharacterSystem2D : ACharacterSystem
     {
@@ -56,7 +56,11 @@ namespace UniCraft.CharacterMechanism.System
 
         protected override void InitializeComponents()
         {
-            base.InitializeComponents();
+        }
+
+        protected override void LoadComponents()
+        {
+            base.LoadComponents();
             Collider = GetComponent<Collider2D>();
             Rigidbody = GetComponent<Rigidbody2D>();
         }

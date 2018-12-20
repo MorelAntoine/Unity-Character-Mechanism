@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using UniCraft.CharacterMechanism.System.Motion.Information;
+using UnityEngine;
 
-namespace UniCraft.CharacterMechanism.System.Motion.FiniteStateMachine
+namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
 {
     /// <inheritdoc/>
     /// <summary>
@@ -11,6 +12,6 @@ namespace UniCraft.CharacterMechanism.System.Motion.FiniteStateMachine
         /// <summary>
         /// Verify if the condition is met or not
         /// </summary>
-        public abstract bool IsConditionMet(ACharacterSystem cs, MotionInput mi);
+        public abstract bool IsConditionMet(ACharacterSystem characterSystem, MotionInput motionInput);
     }
 }

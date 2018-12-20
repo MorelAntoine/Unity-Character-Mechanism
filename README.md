@@ -17,7 +17,7 @@ ACharacterSystem)*
 
 ## Architecture
 
-The framework is divided into three main parts: 
+The framework is divided into four main parts: 
 
 - **Behaviour**: Define the behaviour of the character. Focus on 
 managing the inputs (AI or Player) in order to control the character.
@@ -26,11 +26,16 @@ managing the inputs (AI or Player) in order to control the character.
 manage a motion state machine in order to move the character or trigger
 actions on the character.
 
-- **Motion *(Condition / State / Transition)***: Integrated in the
-motion state machine, they define the requirements to transit to
-another state *(Condition)*, they define the action and how it's behave
-*(State)* and they define which state will be given after a transition
-*(Transition)*.
+- **Motion *(Condition / State / Transition / Information)***:
+Integrated into the motion state machine, the condition define the
+requirement to transit to another state, the state define the action
+and how it's behave and the transition define which state will be given
+after a transition.
+
+- **Motion Information *(Configuration / Input)***: Linked to the 
+system, the motion information contain the configuration of the 
+motion and the input information used by the behaviour and the motion
+state machine.
 
 ## Tools
 
@@ -63,6 +68,14 @@ Motion
     
     - MotionTransition
         ScriptableObject to create motion transition (e.g. ToWalk)
+
+Input
+
+    - MotionConfiguration
+        Contain the motion configuration (e.g. should adapt the state action for the NavMesh)
+        
+    - MotionInput
+        Contain the input information used by the behaviour and the motion state machine (e.g. bJumpButton)
 
 System Extra Components
 

@@ -6,7 +6,7 @@ namespace UniCraft.CharacterMechanism.System
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base Module to create a 3D character system
+    /// Base module to manage the 3D components of the character
     /// </summary>
     public abstract class ACharacterSystem3D : ACharacterSystem
     {
@@ -17,18 +17,18 @@ namespace UniCraft.CharacterMechanism.System
         ///////////////////////////////
         ////////// Component //////////
 
-        [SerializeField] protected Collider Collider;
-        [SerializeField] protected Rigidbody Rigidbody;
+        [SerializeField] protected Collider Collider = null;
+        [SerializeField] protected Rigidbody Rigidbody = null;
         
         ///////////////////////////////
         ////////// Context ////////////
 
-        [SerializeField] protected EnvironmentContext3D EnvironmentContext;
+        [SerializeField] protected EnvironmentContext3D EnvironmentContext = null;
 
         ///////////////////////////////
         ////////// Profile ////////////
 
-        [SerializeField] protected LocomotionProfile3D LocomotionProfile;
+        [SerializeField] protected LocomotionProfile3D LocomotionProfile = null;
 
         //////////////////////////////
         ////////// Property //////////
@@ -56,7 +56,11 @@ namespace UniCraft.CharacterMechanism.System
 
         protected override void InitializeComponents()
         {
-            base.InitializeComponents();
+        }
+
+        protected override void LoadComponents()
+        {
+            base.LoadComponents();
             Collider = GetComponent<Collider>();
             Rigidbody = GetComponent<Rigidbody>();
         }

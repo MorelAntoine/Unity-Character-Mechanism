@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using UniCraft.CharacterMechanism.System;
+using UniCraft.CharacterMechanism.System.Motion.Information;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace UniCraft.CharacterMechanism.Behaviour
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base Module to create character behaviour that use NavMesh
+    /// Base module to define the behaviour of a character that use a NavMesh
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public abstract class ANavCharacterBehaviour : ACharacterBehaviour
@@ -14,36 +16,59 @@ namespace UniCraft.CharacterMechanism.Behaviour
         ////////// Attribute //////////
         ///////////////////////////////
 
-        protected NavMeshAgent NavMeshAgent = null;
+        private NavMeshAgent _navMeshAgent = null;
         
         ////////////////////////////
         ////////// Method //////////
         ////////////////////////////
 
+        //////////////////////////////////////////////////
+        ////////// ACharacterBehaviour Callback //////////
+
+        protected sealed override void Initialize(ACharacterSystem characterSystem,
+            MotionConfiguration motionConfiguration)
+        {
+            motionConfiguration.AdaptToNavMesh = true;
+            SetupNavMeshAgent(characterSystem);
+            Initialize(characterSystem, motionConfiguration, _navMeshAgent);
+        }
+
+        protected sealed override void UpdateMotionInput(MotionInput motionInput)
+        {
+            UpdateMotionInput(motionInput, _navMeshAgent);
+        }
+
         //////////////////////////////
         ////////// Callback //////////
+
+        /// <summary>
+        /// Initialize the behaviour
+        /// </summary>
+        protected abstract void Initialize(ACharacterSystem characterSystem, MotionConfiguration motionConfiguration,
+            NavMeshAgent navMeshAgent);
         
-        protected override void Awake()
-        {
-            base.Awake();
-            CharacterSystem.GetMotionInput.AdaptToNavMesh = true;
-            NavMeshAgent = GetComponent<NavMeshAgent>();
-            ConfigureNavMeshAgent();
-        }
+        /// <summary>
+        /// Update the motion input in order to move the character
+        /// </summary>
+        protected abstract void UpdateMotionInput(MotionInput motionInput, NavMeshAgent navMeshAgent);
+        
+        //////////////////////////////
+        ////////// Service ///////////
         
         /// <summary>
         /// Configure the NavMeshAgent
         /// </summary>
-        protected virtual void ConfigureNavMeshAgent()
+        private void SetupNavMeshAgent(ACharacterSystem characterSystem)
         {
-            NavMeshAgent.acceleration = 8f;
-            NavMeshAgent.speed = 1f;
-            if ( NavMeshAgent.stoppingDistance < 0.1f )
+            _navMeshAgent = characterSystem.GetComponent<NavMeshAgent>();
+            _navMeshAgent.acceleration = 8f;
+            _navMeshAgent.speed = 1f;
+            if ( _navMeshAgent.stoppingDistance < 0.1f )
             {
-                NavMeshAgent.stoppingDistance = 1.2f;
+                _navMeshAgent.stoppingDistance = 1.2f;
             }
-            NavMeshAgent.updatePosition = true;
-            NavMeshAgent.updateRotation = false;
+            _navMeshAgent.updatePosition = true;
+            _navMeshAgent.updateRotation = false;
         }
     }
 }
