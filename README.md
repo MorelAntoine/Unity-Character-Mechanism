@@ -17,7 +17,7 @@ ACharacterSystem)*
 
 ## Architecture
 
-The framework is divided into three main parts : 
+The framework is divided into three main parts: 
 
 - **Behaviour**: Define the behaviour of the character. Focus on 
 managing the inputs (AI or Player) in order to control the character.
@@ -37,48 +37,40 @@ another state *(Condition)*, they define the action and how it's behave
 Behaviour
 
     - ACharacterBehaviour
-        Base class to inherit in order to define a character behaviour.
-        (e.g. Player)
+        Base class to inherit in order to define a character behaviour (e.g. Player)
     
     - ANavCharacterBehaviour
-        Base class to inherit in order to define a character behaviour
-        that use a NavMesh.
-        (e.g. Follow AI)
+        Base class to inherit in order to define a character behaviour that use a NavMesh (e.g. Follow AI)
 
 System
 
     - ACharacterSystem
-        Base class to inherit in order to define a character system.
+        Base class to inherit in order to define a character system
     
     - ACharacterSystem2D
-        Base class to inherit in order to define a character system 2D.
-        (e.g. HumanSystem2D)
+        Base class to inherit in order to define a character system 2D (e.g. HumanSystem2D)
     
     - ACharacterSystem3D
-        Base class to inherit in order to define a character system 3D.
-        (e.g. HumanSystem3D)
+        Base class to inherit in order to define a character system 3D (e.g. HumanSystem3D)
 
 Motion
 
     - AMotionCondition
-        Base class to inherit in order to create a motion condition.
+        Base class to inherit in order to create a motion condition (e.g. AreDirectionalKeyPressed)
     
     - AMotionState
-        Base class to inherit in order to create a motion state.
+        Base class to inherit in order to create a motion state (e.g. Walk)
     
     - MotionTransition
-        ScriptableObject to create motion transition.
-        (nothing to inherit here, just create Asset)
+        ScriptableObject to create motion transition (e.g. ToWalk)
 
 System Extra Components
 
     - EnvironmentContext(2D or 3D)
-        Allow you to get information between the character and the
-        environment (e.g. IsGrounded)
+        Allow you to get information between the character and the environment (e.g. IsGrounded)
     
     - LocomotionProfile(2D or 3D)
-        If you don't use RootMotion, this profile define all the
-        variables you need to move your character.
+        If you don't use RootMotion, this profile define all the variables you need to move your character
 
 ## Dependencies
 
