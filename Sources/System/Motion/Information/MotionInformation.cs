@@ -3,7 +3,7 @@
 namespace UniCraft.CharacterMechanism.System.Motion.Information
 {
     /// <summary>
-    /// Class to gather all the information about motion for a motion state machine
+    /// Class gathering all the information needed for a behaviour and a motion state machine
     /// </summary>
     [global::System.Serializable]
     public sealed class MotionInformation

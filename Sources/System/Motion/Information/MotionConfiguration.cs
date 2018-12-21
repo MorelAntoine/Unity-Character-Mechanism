@@ -1,7 +1,7 @@
 ﻿namespace UniCraft.CharacterMechanism.System.Motion.Information
 {
     /// <summary>
-    /// Class to contain configuration about motion for the motion state machine
+    /// Class containing the motion configuration for a motion state machine
     /// </summary>
     [global::System.Serializable]
     public sealed class MotionConfiguration
