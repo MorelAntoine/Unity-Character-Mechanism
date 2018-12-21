@@ -72,9 +72,15 @@ namespace UniCraft.CharacterMechanism.System
 
         protected virtual void Awake()
         {
-            _motionStateMachine.Initialize();
-            LoadComponents();
-            InitializeComponents();
+            if ( !_motionStateMachine.Initialize() )
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                LoadComponents();
+                InitializeComponents();
+            }
         }
 
         protected virtual void Start()

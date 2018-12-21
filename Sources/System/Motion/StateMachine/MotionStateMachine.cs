@@ -1,4 +1,5 @@
-﻿using UniCraft.AttributeCollection;
+﻿using System.Collections.Generic;
+using UniCraft.AttributeCollection;
 using UniCraft.CharacterMechanism.System.Motion.Information;
 using UnityEngine;
 
@@ -31,7 +32,8 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         [Header("Information")]
         [SerializeField, DisableInInspector] private AMotionState _currentState = null;
         [SerializeField, DisableInInspector] private AMotionState _previousState = null;
-        
+        private Dictionary<string, AMotionState> _stateRecords = null;
+
         /////////////////////////////
         ////////// Setting //////////
         
@@ -55,13 +57,16 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         /// <summary>
         /// Initialize the motion state machine
         /// </summary>
-        public void Initialize()
+        public bool Initialize()
         {
-            _currentState = _entryState;
-            if ( _currentState == null )
+            if ( _entryState == null )
             {
                 Debug.LogError(ErrorMessageNoEntryState);
+                return (false);
             }
+            _stateRecords = new Dictionary<string, AMotionState>();
+            _currentState = GetStateFromRecords(_entryState);
+            return (true);
         }
 
         /// <summary>
@@ -69,10 +74,7 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         /// </summary>
         public void Start(ACharacterSystem characterSystem)
         {
-            if ( _currentState != null )
-            {
-                _currentState.Begin(characterSystem);
-            }
+            _currentState.Begin(characterSystem);
         }
 
         /// <summary>
@@ -80,10 +82,7 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         /// </summary>
         public void Execute(MotionInformation motionInformation)
         {
-            if ( _currentState != null )
-            {
-                _currentState.Tick(motionInformation);
-            }
+            _currentState.Tick(motionInformation);
         }
 
         /// <summary>
@@ -91,18 +90,16 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         /// </summary>
         public void Update(ACharacterSystem characterSystem, MotionInformation motionInformation)
         {
-            if ( _currentState != null )
+            var nextState = _currentState.AttemptToGetNextState(characterSystem, motionInformation);
+            
+            if ( nextState != null )
             {
-                var nextState = _currentState.AttemptToGetNextState(characterSystem, motionInformation);
-                if ( nextState != null )
+                _previousState = _currentState;
+                _currentState = GetStateFromRecords(nextState);
+                _currentState.Begin(characterSystem);
+                if ( _displayTransitionLog )
                 {
-                    _previousState = _currentState;
-                    _currentState = nextState;
-                    _currentState.Begin(characterSystem);
-                    if ( _displayTransitionLog )
-                    {
-                        DisplayTransitionLog();
-                    }
+                    DisplayTransitionLog();
                 }
             }
         }
@@ -110,12 +107,33 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         /////////////////////////////
         ////////// Service //////////
 
+        ////////// Log //////////
+        
         /// <summary>
         /// Display the transition between the previous state and the current state in the console
         /// </summary>
         private void DisplayTransitionLog()
         {
             Debug.Log(_previousState.GetType().Name + " --> " + _currentState.GetType().Name);
+        }
+        
+        ////////// Pooling //////////
+
+        /// <summary>
+        /// ScriptableObject represent one instance, so we need to duplicate it. To increase the
+        /// performance, the motion states are recorded in order to be reused.
+        /// Function complexity O(1) thanks to the unordered hash table Dictionary.
+        /// </summary>
+        private AMotionState GetStateFromRecords(AMotionState refState)
+        {
+            var stateKey = refState.GetType().Name;
+            
+            if ( !_stateRecords.ContainsKey(stateKey) )
+            {
+                _stateRecords.Add(stateKey, Object.Instantiate(refState));
+                Debug.Log(_stateRecords.Count);
+            }
+            return (_stateRecords[stateKey]);
         }
     }
 }
