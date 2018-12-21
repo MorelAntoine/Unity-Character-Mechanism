@@ -18,6 +18,13 @@ namespace UniCraft.CharacterMechanism.Behaviour
 
         private NavMeshAgent _navMeshAgent = null;
         
+        //////////////////////////////
+        ////////// Property //////////
+        //////////////////////////////
+
+        protected Vector3 GetNextDirection => _navMeshAgent.desiredVelocity.normalized;
+        protected bool IsArrived => (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance);
+        
         ////////////////////////////
         ////////// Method //////////
         ////////////////////////////
@@ -35,6 +42,7 @@ namespace UniCraft.CharacterMechanism.Behaviour
 
         protected sealed override void UpdateMotionInput(MotionInput motionInput)
         {
+            motionInput.MovementDirection.Set(0f, 0f, 0f);
             UpdateMotionInput(motionInput, _navMeshAgent);
         }
 
@@ -61,12 +69,9 @@ namespace UniCraft.CharacterMechanism.Behaviour
         private void SetupNavMeshAgent(ACharacterSystem characterSystem)
         {
             _navMeshAgent = characterSystem.GetComponent<NavMeshAgent>();
-            _navMeshAgent.acceleration = 8f;
-            _navMeshAgent.speed = 1f;
-            if ( _navMeshAgent.stoppingDistance < 0.1f )
-            {
-                _navMeshAgent.stoppingDistance = 1.2f;
-            }
+            _navMeshAgent.acceleration = 0.01f;
+            _navMeshAgent.angularSpeed = 0.01f;
+            _navMeshAgent.speed = 0.01f;
             _navMeshAgent.updatePosition = true;
             _navMeshAgent.updateRotation = false;
         }
