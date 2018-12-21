@@ -8,10 +8,10 @@ Unity-Pluggable-Finite-State-Machine for the motion ; this meant that
 condition, state and transition are assets and can be reusable
 *(once it's coded, you don't have to do it again ; it's pretty useful)*.
 
-**Space support**: 2D and 3D *(other space can be supported via
+**Supported Spaces**: 2D and 3D *(other space can be supported via
 ACharacterSystem)*
 
-**Motion support**: RootMotion and Script
+**Supported Motions**: RootMotion and Script
 
 **Supported features**: NavMesh
 
@@ -19,12 +19,12 @@ ACharacterSystem)*
 
 The framework is divided into four main parts: 
 
-- **Behaviour**: Define the behaviour of the character. Focus on 
-managing the inputs (AI or Player) in order to control the character.
+- **Behaviour**: Define the behaviour of a character. Focus on 
+managing the inputs (AI or Player) in order to control it.
 
-- **System**: Gather all the required components of the character and
-manage a motion state machine in order to move the character or trigger
-actions on the character.
+- **System**: Gather all the required components of a character and
+manage a motion state machine in order to move a character or trigger
+actions on a character.
 
 - **Motion *(Condition / State / Transition / Information)***:
 Integrated into the motion state machine, the condition define the
@@ -34,7 +34,7 @@ after a transition.
 
 - **Motion Information *(Configuration / Input)***: Linked to the 
 system, the motion information contain the configuration of the 
-motion and the input information used by the behaviour and the motion
+motion and the input information used by a behaviour and a motion
 state machine.
 
 ## Tools
@@ -72,18 +72,18 @@ Motion
 Input
 
     - MotionConfiguration
-        Contain the motion configuration (e.g. should adapt the state action for the NavMesh)
+        Contain the motion configuration
         
     - MotionInput
-        Contain the input information used by the behaviour and the motion state machine (e.g. bJumpButton)
+        Contain the input information used by a behaviour and a motion state machine (e.g. bJumpButton)
 
 System Extra Components
 
     - EnvironmentContext(2D or 3D)
-        Allow you to get information between the character and the environment (e.g. IsGrounded)
+        Allow to get information between a character and the environment (e.g. IsGrounded)
     
     - LocomotionProfile(2D or 3D)
-        If you don't use RootMotion, this profile define all the variables you need to move your character
+        If you don't use RootMotion, this class define all the required variables to move a character
 
 ## Dependencies
 
@@ -97,7 +97,7 @@ An example can be founded in the **Example/** folder.
 
 Develop under Unity **2018.3.0b**
 
-Version **2.0.0**
+Version **2.1.1**
 
 ## Licence
 
