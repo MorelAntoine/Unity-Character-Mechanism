@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UniCraft.CharacterMechanism.System.Motion.Information
 {
     /// <summary>
-    /// Class to contain the input information for the motion state machine and the behaviour
+    /// Class containing all the input information required for a behaviour and a motion state machine
     /// </summary>
     [global::System.Serializable]
     public sealed class MotionInput
@@ -21,6 +21,7 @@ namespace UniCraft.CharacterMechanism.System.Motion.Information
 
         /// <summary>
         /// Reset all the input information
+        /// <remarks>Call before every UpdateMotionInput</remarks>
         /// </summary>
         public void Reset()
         {

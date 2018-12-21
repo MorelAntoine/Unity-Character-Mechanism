@@ -7,7 +7,7 @@ namespace UniCraft.CharacterMechanism.Behaviour
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base module to define the behaviour of a character that use a NavMesh
+    /// Base module to define a behaviour for a character that use a NavMesh
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
     public abstract class ANavCharacterBehaviour : ACharacterBehaviour
@@ -16,13 +16,23 @@ namespace UniCraft.CharacterMechanism.Behaviour
         ////////// Attribute //////////
         ///////////////////////////////
 
+        private ACharacterSystem _acs = null; // _characterSystem is already used by ACharacterBehaviour,
+                                              // multiple definitions lead to compilation errors
         private NavMeshAgent _navMeshAgent = null;
         
         //////////////////////////////
         ////////// Property //////////
         //////////////////////////////
 
-        protected Vector3 GetNextDirection => _navMeshAgent.desiredVelocity.normalized;
+        /// <summary>
+        /// Normalize and convert to local space the next direction
+        /// </summary>
+        protected Vector3 GetNextDirection => _acs.transform
+            .InverseTransformDirection(_navMeshAgent.desiredVelocity.normalized);
+        
+        /// <summary>
+        /// Verify if the agent is arrived to the destination or not
+        /// </summary>
         protected bool IsArrived => (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance);
         
         ////////////////////////////
@@ -35,14 +45,14 @@ namespace UniCraft.CharacterMechanism.Behaviour
         protected sealed override void Initialize(ACharacterSystem characterSystem,
             MotionConfiguration motionConfiguration)
         {
-            motionConfiguration.AdaptToNavMesh = true;
-            SetupNavMeshAgent(characterSystem);
+            _acs = characterSystem;
+            _navMeshAgent = _acs.GetComponent<NavMeshAgent>();
+            ConfigureNavMeshAgent();
             Initialize(characterSystem, motionConfiguration, _navMeshAgent);
         }
 
         protected sealed override void UpdateMotionInput(MotionInput motionInput)
         {
-            motionInput.MovementDirection.Set(0f, 0f, 0f);
             UpdateMotionInput(motionInput, _navMeshAgent);
         }
 
@@ -65,10 +75,10 @@ namespace UniCraft.CharacterMechanism.Behaviour
         
         /// <summary>
         /// Configure the NavMeshAgent
+        /// <code>The NavMeshAgent need to have a minimum speed value in order to move</code>
         /// </summary>
-        private void SetupNavMeshAgent(ACharacterSystem characterSystem)
+        private void ConfigureNavMeshAgent()
         {
-            _navMeshAgent = characterSystem.GetComponent<NavMeshAgent>();
             _navMeshAgent.acceleration = 0.01f;
             _navMeshAgent.angularSpeed = 0.01f;
             _navMeshAgent.speed = 0.01f;
