@@ -50,6 +50,6 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         /// <summary>
         /// Call every Fixed Update
         /// </summary>
-        public abstract void Tick(MotionInformation motionInformation);
+        public abstract void Tick(MotionConfiguration mc, MotionInput mi);
     }
 }

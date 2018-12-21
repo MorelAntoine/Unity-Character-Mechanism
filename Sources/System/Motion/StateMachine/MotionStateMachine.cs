@@ -82,7 +82,7 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         /// </summary>
         public void Execute(MotionInformation motionInformation)
         {
-            _currentState.Tick(motionInformation);
+            _currentState.Tick(motionInformation.GetMotionConfiguration, motionInformation.GetMotionInput);
         }
 
         /// <summary>
@@ -131,7 +131,6 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
             if ( !_stateRecords.ContainsKey(stateKey) )
             {
                 _stateRecords.Add(stateKey, Object.Instantiate(refState));
-                Debug.Log(_stateRecords.Count);
             }
             return (_stateRecords[stateKey]);
         }
