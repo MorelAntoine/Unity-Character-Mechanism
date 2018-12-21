@@ -6,7 +6,7 @@ namespace UniCraft.CharacterMechanism.System
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base module to manage the components of the character and a motion state machine
+    /// Base module to manage the components of a character and a motion state machine
     /// </summary>
     [DisallowMultipleComponent]
     public abstract class ACharacterSystem : MonoBehaviour

@@ -6,7 +6,7 @@ namespace UniCraft.CharacterMechanism.System
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base module to manage the 3D components of the character
+    /// Base module to manage the 3D components of a character
     /// </summary>
     public abstract class ACharacterSystem3D : ACharacterSystem
     {
