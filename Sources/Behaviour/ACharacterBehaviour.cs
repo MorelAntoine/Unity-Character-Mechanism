@@ -6,7 +6,7 @@ namespace UniCraft.CharacterMechanism.Behaviour
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base module to define the behaviour of a character
+    /// Base module to define a behaviour for a character
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(ACharacterSystem))]
@@ -46,6 +46,7 @@ namespace UniCraft.CharacterMechanism.Behaviour
         
         protected virtual void Update()
         {
+            _characterSystem.GetMotionInformation.GetMotionInput.Reset();
             UpdateMotionInput(_characterSystem.GetMotionInformation.GetMotionInput);
         }
     }
