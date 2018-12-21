@@ -17,11 +17,13 @@ namespace UniCraft.CharacterMechanism.System
         ///////////////////////////////
         ////////// Context ////////////
 
+        [Header("Context")]
         [SerializeField] protected EnvironmentContext3D EnvironmentContext = null;
 
         ///////////////////////////////
         ////////// Profile ////////////
 
+        [Header("Profile")]
         [SerializeField] protected LocomotionProfile3D LocomotionProfile = null;
 
         //////////////////////////////

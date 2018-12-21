@@ -15,6 +15,7 @@ namespace UniCraft.CharacterMechanism.System
         ////////// Attribute //////////
         ///////////////////////////////
 
+        [Header("Motion")]
         [SerializeField] private MotionInformation _motionInformation = null;
         [SerializeField] private MotionStateMachine _motionStateMachine = null;
         
