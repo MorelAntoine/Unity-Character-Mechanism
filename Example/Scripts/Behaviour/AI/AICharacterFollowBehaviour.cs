@@ -10,7 +10,7 @@ namespace UniCraft.CharacterMechanism.Example.Behaviour
     /// <summary>
     /// Basic AI Follower that use the NavMesh
     /// </summary>
-    public class AICharacterFollowBehaviour : ANavCharacterBehaviour
+    public sealed class AICharacterFollowBehaviour : ANavCharacterBehaviour
     {
         ///////////////////////////////
         ////////// Attribute //////////

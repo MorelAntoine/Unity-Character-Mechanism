@@ -11,7 +11,7 @@ namespace UniCraft.CharacterMechanism.Example.Motion.State
     /// Basic walk state working for both NavMesh and classic controller
     /// </summary>
     [CreateAssetMenu(menuName = "UniCraft/Character/Example/State/Walk")]
-    public class WalkState : AMotionState
+    public sealed class WalkState : AMotionState
     {
         ///////////////////////////////
         ////////// Attribute //////////

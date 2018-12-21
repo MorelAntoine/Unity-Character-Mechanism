@@ -10,7 +10,7 @@ namespace UniCraft.CharacterMechanism.Example.Motion.State
     /// Basic idle state
     /// </summary>
     [CreateAssetMenu(menuName = "UniCraft/Character/Example/State/Idle")]
-    public class IdleState : AMotionState
+    public sealed class IdleState : AMotionState
     {
         public override void Begin(ACharacterSystem characterSystem)
         {}
