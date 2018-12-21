@@ -13,12 +13,6 @@ namespace UniCraft.CharacterMechanism.System
         ///////////////////////////////
         ////////// Attribute //////////
         ///////////////////////////////
-
-        ///////////////////////////////
-        ////////// Component //////////
-
-        [SerializeField] protected Collider Collider = null;
-        [SerializeField] protected Rigidbody Rigidbody = null;
         
         ///////////////////////////////
         ////////// Context ////////////
@@ -35,12 +29,6 @@ namespace UniCraft.CharacterMechanism.System
         //////////////////////////////
 
         ///////////////////////////////
-        ////////// Component //////////
-
-        public Collider GetCollider => Collider;
-        public Rigidbody GetRigidbody => Rigidbody;
-        
-        ///////////////////////////////
         ////////// Context ////////////
 
         public EnvironmentContext3D GetEnvironmentContext => EnvironmentContext;
@@ -49,20 +37,5 @@ namespace UniCraft.CharacterMechanism.System
         ////////// Profile ////////////
 
         public LocomotionProfile3D GetLocomotionProfile => LocomotionProfile;
-        
-        ////////////////////////////
-        ////////// Method //////////
-        ////////////////////////////
-
-        protected override void InitializeComponents()
-        {
-        }
-
-        protected override void LoadComponents()
-        {
-            base.LoadComponents();
-            Collider = GetComponent<Collider>();
-            Rigidbody = GetComponent<Rigidbody>();
-        }
     }
 }

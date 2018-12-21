@@ -14,14 +14,6 @@ namespace UniCraft.CharacterMechanism.System
         ///////////////////////////////
         ////////// Attribute //////////
         ///////////////////////////////
-        
-        ///////////////////////////////
-        ////////// Component //////////
-
-        [SerializeField] protected Animator Animator = null;
-
-        ////////////////////////////
-        ////////// Motion //////////
 
         [SerializeField] private MotionInformation _motionInformation = null;
         [SerializeField] private MotionStateMachine _motionStateMachine = null;
@@ -30,20 +22,7 @@ namespace UniCraft.CharacterMechanism.System
         ////////// Property //////////
         //////////////////////////////
         
-        //////////////////////////////
-        ////////// Component //////////
-
-        public Animator GetAnimator => Animator;
-        
-        ////////////////////////////
-        ////////// Motion //////////
-        
-        ////////// Input //////////
-        
         public MotionInformation GetMotionInformation => _motionInformation;
-        
-        ////////// State //////////
-        
         public AMotionState GetCurrentState => _motionStateMachine.GetCurrentState;
         public AMotionState GetPreviousState => _motionStateMachine.GetPreviousState;
         
@@ -58,14 +37,11 @@ namespace UniCraft.CharacterMechanism.System
         /// Initialize all the components
         /// </summary>
         protected abstract void InitializeComponents();
-        
+
         /// <summary>
         /// Load all the required components
         /// </summary>
-        protected virtual void LoadComponents()
-        {
-            Animator = GetComponent<Animator>();
-        }
+        protected abstract void LoadComponents();
         
         ////////////////////////////////////////////
         ////////// MonoBehaviour Callback //////////

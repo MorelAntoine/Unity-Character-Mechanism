@@ -8,5 +8,10 @@ namespace UniCraft.CharacterMechanism.Example.System
     /// </summary>
     public class HumanSystem3D : ACharacterSystem3D
     {
+        protected override void InitializeComponents()
+        {}
+
+        protected override void LoadComponents()
+        {}
     }
 }
