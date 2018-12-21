@@ -5,7 +5,7 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base ScriptableObject to create a motion state for the motion state machine
+    /// Base ScriptableObject to create a motion state for a motion state machine
     /// </summary>
     public abstract class AMotionState : ScriptableObject
     {

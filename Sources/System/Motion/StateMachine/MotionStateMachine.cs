@@ -6,7 +6,7 @@ using UnityEngine;
 namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
 {
     /// <summary>
-    /// Class to manage the motions of the character
+    /// Class to manage the motions of a character
     /// </summary>
     [global::System.Serializable]
     public sealed class MotionStateMachine
@@ -120,9 +120,12 @@ namespace UniCraft.CharacterMechanism.System.Motion.StateMachine
         ////////// Pooling //////////
 
         /// <summary>
-        /// ScriptableObject represent one instance, so we need to duplicate it. To increase the
-        /// performance, the motion states are recorded in order to be reused.
+        /// Return the corresponding loaded state
+        /// <code>
+        /// ScriptableObject represent one instance, so we need to duplicate it.
+        /// To increase the performance, the motion states records the new loaded states and reused it.
         /// Function complexity O(1) thanks to the unordered hash table Dictionary.
+        /// </code>
         /// </summary>
         private AMotionState GetStateFromRecords(AMotionState refState)
         {
