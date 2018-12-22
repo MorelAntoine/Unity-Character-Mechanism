@@ -97,7 +97,7 @@ An example can be founded in the **Example/** folder.
 
 Develop under Unity **2018.3.0b**
 
-Version **2.1.1**
+Version **2.0.1**
 
 ## Licence
 
