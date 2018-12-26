@@ -33,7 +33,7 @@ namespace UniCraft.CharacterMechanism.Example.Motion.State
             var angularSpeed = _human.GetLocomotionProfile.InterpolateAngularSpeed(mi.MovementDirection.z);
 
             _human.transform.Rotate(0f, mi.MovementDirection.x * angularSpeed * Time.deltaTime, 0f, Space.Self);
-            _human.transform.Translate(0f, 0f, mi.MovementDirection.z * _human.GetLocomotionProfile.WalkSpeed* Time.deltaTime, Space.Self);
+            _human.transform.Translate(0f, 0f, mi.MovementDirection.z * _human.GetLocomotionProfile.WalkSpeed * Time.deltaTime, Space.Self);
         }
     }
 }
