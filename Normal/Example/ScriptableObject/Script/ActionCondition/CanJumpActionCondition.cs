@@ -1,4 +1,15 @@
-﻿using CharacterMechanism.Normal.Information;
+﻿/*
+** CanJumpActionCondition.cs for Unity-Character-Mechanism
+**
+** Made by Antoine MOREL
+**
+** Started on  Jan 07 2019 Antoine MOREL
+** Last update Jan 09 2019 Antoine MOREL
+** 
+** Copyright (c) 2018 - 2019 All Rights Reserved
+*/
+
+using CharacterMechanism.Normal.Information;
 using CharacterMechanism.Normal.ScriptableObject;
 using UnityEngine;
 

@@ -1,4 +1,15 @@
-﻿using CharacterMechanism.Normal.System;
+﻿/*
+** HumanSystem.cs for Unity-Character-Mechanism
+**
+** Made by Antoine MOREL
+**
+** Started on  Jan 09 2019 Antoine MOREL
+** Last update Jan 09 2019 Antoine MOREL
+** 
+** Copyright (c) 2018 - 2019 All Rights Reserved
+*/
+
+using CharacterMechanism.Normal.System;
 using UnityEngine;
 
 namespace CharacterMechanism.Normal.Example

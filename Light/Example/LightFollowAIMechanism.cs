@@ -1,4 +1,15 @@
-﻿using CharacterMechanism.Normal.Attribute;
+﻿/*
+** LightFollowAIMechanism.cs for Unity-Character-Mechanism
+**
+** Made by Antoine MOREL
+**
+** Started on  Jan 05 2019 Antoine MOREL
+** Last update Jan 09 2019 Antoine MOREL
+** 
+** Copyright (c) 2018 - 2019 All Rights Reserved
+*/
+
+using CharacterMechanism.Normal.Attribute;
 using UnityEngine;
 
 namespace CharacterMechanism.Light.Example
