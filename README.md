@@ -36,7 +36,7 @@ reusable conditions, states and transitions ; and standardize all the input info
 All the sections of the code development of a character is divided into single part in order to
 offer the most scalable, maintainable and reusable code. 
 
-It's important to note that condition, state and transition are **single instance shared by all the
+It's important to note that **condition, state and transition are single instance shared by all the
 character mechanism** ; this means that no matter the number of Normal Character Mechanism you have
 only there mechanism will be instantiated, so the memory cost is highly reduced. 
 
