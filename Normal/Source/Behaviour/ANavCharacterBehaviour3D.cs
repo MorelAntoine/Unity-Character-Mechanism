@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace CharacterMechanism.Normal.Mechanism
+namespace CharacterMechanism.Normal.Behaviour
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base class to create a generic nav character mechanism 3D
+    /// Base class to create a generic nav character behaviour 3D
     /// </summary>
     [RequireComponent(typeof(NavMeshAgent))]
-    public abstract class ANavCharacterMechanism3D : ACharacterMechanism3D
+    public abstract class ANavCharacterBehaviour3D : ACharacterBehaviour3D
     {
         ///////////////////////////////
         ////////// Attribute //////////
@@ -41,14 +41,14 @@ namespace CharacterMechanism.Normal.Mechanism
         /// Configure the Nav Mesh Agent
         /// </summary>
         /// <remarks>
-        /// Call at the beginning after InitializeComponents
+        /// Call at the beginning after InitializeInformationComponents
         /// </remarks>
         protected virtual void ConfigureNavMeshAgent()
         {
             _NavMeshAgent.acceleration = 0.01f;
             _NavMeshAgent.angularSpeed = 0.01f;
             _NavMeshAgent.speed = 0.01f;
-            _NavMeshAgent.stoppingDistance = 0.6f;
+            _NavMeshAgent.stoppingDistance = 0.8f;
             _NavMeshAgent.updatePosition = true;
             _NavMeshAgent.updateRotation = false;
         }

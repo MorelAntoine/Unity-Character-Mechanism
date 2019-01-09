@@ -6,7 +6,7 @@ namespace CharacterMechanism.Normal.Information.Locomotion
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Class containing all the locomotion information for a character mechanism
+    /// Class containing all the locomotion information
     /// </summary>
     [Serializable]
     public sealed class LocomotionInformation : IInformation

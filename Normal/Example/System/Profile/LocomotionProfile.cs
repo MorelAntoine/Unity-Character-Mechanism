@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CharacterMechanism.Normal.Example
 {
     /// <summary>
-    /// Class containing all the locomotion settings for a character mechanism
+    /// Class containing all the locomotion settings
     /// </summary>
     [Serializable]
     public sealed class LocomotionProfile

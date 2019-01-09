@@ -6,7 +6,7 @@ namespace CharacterMechanism.Normal.Example
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Example action condition for a detection of no movement direction
+    /// Example of action condition for a detection of no movement direction
     /// </summary>
     [CreateAssetMenu(menuName = "CharacterMechanism/Example/ActionCondition/HasNoMovementDirection")]
     public sealed class HasNoMovementDirectionActionCondition : AActionCondition

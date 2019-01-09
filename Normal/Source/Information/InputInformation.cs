@@ -6,7 +6,7 @@ namespace CharacterMechanism.Normal.Information
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Class containing all the standard input information for a character mechanism
+    /// Class containing all the standard input information
     /// </summary>
     [Serializable]
     public sealed class InputInformation : IInformation

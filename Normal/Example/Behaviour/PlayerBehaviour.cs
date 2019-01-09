@@ -1,23 +1,21 @@
-﻿using CharacterMechanism.Normal.Information;
+﻿using CharacterMechanism.Normal.Behaviour;
+using CharacterMechanism.Normal.Information;
 using UnityEngine;
 
 namespace CharacterMechanism.Normal.Example
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Example of player mechanism using the generic character mechanism
+    /// Example of player behaviour using the generic character behaviour
     /// </summary>
     /// <remarks>
-    /// ACharacterMechanism is used because the script doesn't need collision and trigger detection
+    /// ACharacterBehaviour is used because the script doesn't need collision and trigger detection
     /// </remarks>
-    public sealed class PlayerMechanism : AExampleCharacterMechanism
+    public sealed class PlayerBehaviour : ACharacterBehaviour
     {
         ///////////////////////////////
         ////////// Attribute //////////
         ///////////////////////////////
-    
-        ///////////////////////////////////
-        ////////// Input Setting //////////
 
         [Header("Input Setting")]
         [SerializeField] private KeyCode _jumpKeyCode = KeyCode.Space;
@@ -42,6 +40,12 @@ namespace CharacterMechanism.Normal.Example
         {}
 
         ////////// Input Information //////////
+        
+        protected override void InitializeInformation()
+        {}
+
+        protected override void LoadInformationComponents()
+        {}
         
         protected override void OverrideInputInformationReset(InputInformation inputInformation)
         {}

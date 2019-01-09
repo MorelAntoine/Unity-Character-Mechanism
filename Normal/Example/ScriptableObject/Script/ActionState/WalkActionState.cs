@@ -1,6 +1,6 @@
 ﻿using CharacterMechanism.Normal.Information;
-using CharacterMechanism.Normal.Mechanism;
 using CharacterMechanism.Normal.ScriptableObject;
+using CharacterMechanism.Normal.System;
 using UnityEngine;
 
 namespace CharacterMechanism.Normal.Example
@@ -12,21 +12,21 @@ namespace CharacterMechanism.Normal.Example
     [CreateAssetMenu(menuName = "CharacterMechanism/Example/ActionState/Walk")]
     public sealed class WalkActionState : AActionState
     {
-        public override void BeginAction(ACharacterMechanism characterMechanism, InputInformation inputInformation)
+        public override void BeginAction(ACharacterSystem characterSystem, InputInformation inputInformation)
         {}
 
-        public override void EndAction(ACharacterMechanism characterMechanism, InputInformation inputInformation)
+        public override void EndAction(ACharacterSystem characterSystem, InputInformation inputInformation)
         {}
 
-        public override void UpdateAction(ACharacterMechanism characterMechanism, InputInformation inputInformation)
+        public override void UpdateAction(ACharacterSystem characterSystem, InputInformation inputInformation)
         {
-            var exampleMechanism = characterMechanism as AExampleCharacterMechanism;
+            var human = characterSystem as HumanSystem;
 
-            exampleMechanism.transform.Rotate(0f
-                , inputInformation.GetLocomotionInformation.MovementDirection.x * exampleMechanism.GetLocomotionProfile.AngularSpeed * Time.deltaTime
+            human.transform.Rotate(0f
+                , inputInformation.GetLocomotionInformation.MovementDirection.x * human.GetLocomotionProfile.AngularSpeed * Time.deltaTime
                 , 0f, Space.Self);
-            exampleMechanism.transform.Translate(0f, 0f,
-                inputInformation.GetLocomotionInformation.MovementDirection.z * exampleMechanism.GetLocomotionProfile.WalkSpeed * Time.deltaTime,
+            human.transform.Translate(0f, 0f,
+                inputInformation.GetLocomotionInformation.MovementDirection.z * human.GetLocomotionProfile.WalkSpeed * Time.deltaTime,
                 Space.Self);
         }
     }

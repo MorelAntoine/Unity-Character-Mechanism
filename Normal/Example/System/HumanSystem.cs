@@ -1,25 +1,22 @@
-﻿using CharacterMechanism.Normal.Mechanism;
+﻿using CharacterMechanism.Normal.System;
 using UnityEngine;
 
 namespace CharacterMechanism.Normal.Example
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Example of base character mechanism using the generic character mechanism
+    /// Example of human system
     /// </summary>
-    /// <remarks>
-    /// ACharacterMechanism is used because the script doesn't need collision and trigger detection
-    /// </remarks>
     [RequireComponent(typeof(Rigidbody))]
-    public abstract class AExampleCharacterMechanism : ACharacterMechanism
+    public sealed class HumanSystem : ACharacterSystem
     {
         ///////////////////////////////
         ////////// Attribute //////////
         ///////////////////////////////
-    
+
         ///////////////////////////////
         ////////// Component //////////
-
+        
         private Rigidbody _rigidbody = null;
         
         /////////////////////////////
@@ -39,18 +36,13 @@ namespace CharacterMechanism.Normal.Example
 
         /////////////////////////////
         ////////// Profile //////////
-        
+
         public LocomotionProfile GetLocomotionProfile => _locomotionProfile;
-        
+
         ////////////////////////////
         ////////// Method //////////
         ////////////////////////////
-    
-        //////////////////////////////
-        ////////// Callback //////////
-
-        ////////// Component //////////
-
+        
         protected override void InitializeComponents()
         {
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;

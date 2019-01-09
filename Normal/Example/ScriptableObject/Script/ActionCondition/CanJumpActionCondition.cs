@@ -6,7 +6,7 @@ namespace CharacterMechanism.Normal.Example
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Example action condition for a jump detection
+    /// Example of action condition for a jump detection
     /// </summary>
     [CreateAssetMenu(menuName = "CharacterMechanism/Example/ActionCondition/CanJump")]
     public sealed class CanJumpActionCondition : AActionCondition

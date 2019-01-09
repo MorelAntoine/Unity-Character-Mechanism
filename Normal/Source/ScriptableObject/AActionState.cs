@@ -1,5 +1,5 @@
 ﻿using CharacterMechanism.Normal.Information;
-using CharacterMechanism.Normal.Mechanism;
+using CharacterMechanism.Normal.System;
 using UnityEngine;
 
 namespace CharacterMechanism.Normal.ScriptableObject
@@ -49,7 +49,7 @@ namespace CharacterMechanism.Normal.ScriptableObject
         /// <remarks>
         /// Call when the action state is loaded
         /// </remarks>
-        public abstract void BeginAction(ACharacterMechanism characterMechanism, InputInformation inputInformation);
+        public abstract void BeginAction(ACharacterSystem characterSystem, InputInformation inputInformation);
 
         /// <summary>
         /// Close the action
@@ -57,7 +57,7 @@ namespace CharacterMechanism.Normal.ScriptableObject
         /// <remarks>
         /// Call when the action state is changed
         /// </remarks>
-        public abstract void EndAction(ACharacterMechanism characterMechanism, InputInformation inputInformation);
+        public abstract void EndAction(ACharacterSystem characterSystem, InputInformation inputInformation);
 
         /// <summary>
         /// Update the action
@@ -65,6 +65,6 @@ namespace CharacterMechanism.Normal.ScriptableObject
         /// <remarks>
         /// Call every FixedUpdate
         /// </remarks>
-        public abstract void UpdateAction(ACharacterMechanism characterMechanism, InputInformation inputInformation);
+        public abstract void UpdateAction(ACharacterSystem characterSystem, InputInformation inputInformation);
     }
 }

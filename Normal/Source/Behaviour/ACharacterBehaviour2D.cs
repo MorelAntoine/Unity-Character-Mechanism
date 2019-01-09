@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace CharacterMechanism.Normal.Mechanism
+namespace CharacterMechanism.Normal.Behaviour
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Base class to create a character mechanism 2D
+    /// Base class to create a character behaviour 2D
     /// </summary>
-    public abstract class ACharacterMechanism2D : ACharacterMechanism
+    public abstract class ACharacterBehaviour2D : ACharacterBehaviour
     {
         ////////////////////////////
         ////////// Method //////////

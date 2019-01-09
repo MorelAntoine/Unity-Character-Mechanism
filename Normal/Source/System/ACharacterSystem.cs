@@ -3,14 +3,14 @@ using CharacterMechanism.Normal.Information;
 using CharacterMechanism.Normal.ScriptableObject;
 using UnityEngine;
 
-namespace CharacterMechanism.Normal.Mechanism
+namespace CharacterMechanism.Normal.System
 {
     /// <inheritdoc />
     /// <summary>
-    /// Base class to create a generic character mechanism
+    /// Base class to create a character system
     /// </summary>
     [DisallowMultipleComponent]
-    public abstract class ACharacterMechanism : MonoBehaviour
+    public abstract class ACharacterSystem : MonoBehaviour
     {
         ///////////////////////////////
         ////////// Attribute //////////
@@ -60,6 +60,14 @@ namespace CharacterMechanism.Normal.Mechanism
             get { return _shouldDisplayTransition; }
             set { _shouldDisplayTransition = value; }
         }
+        
+        ///////////////////////////////////////
+        ////////// Input Information //////////
+
+        /// <summary>
+        /// Return the input information of the system to control the action
+        /// </summary>
+        public InputInformation InputInformation => _inputInformation;
 
         ////////////////////////////
         ////////// Method //////////
@@ -68,18 +76,8 @@ namespace CharacterMechanism.Normal.Mechanism
         //////////////////////////////
         ////////// Callback //////////
         
-        ////////// Activation //////////
-
-        protected abstract void OnDestroy();
-
-        protected abstract void OnDisable();
-        
-        protected abstract void OnEnable();
-        
-        ////////// Component //////////
-        
         /// <summary>
-        /// Initialize all the loaded components
+        /// Initialize all the loaded components to drive the action
         /// </summary>
         /// <remarks>
         /// Call at the beginning after LoadComponents
@@ -87,30 +85,12 @@ namespace CharacterMechanism.Normal.Mechanism
         protected abstract void InitializeComponents();
         
         /// <summary>
-        /// Load all the required components
+        /// Load all the components to drive the action
         /// </summary>
         /// <remarks>
         /// Call at the beginning before InitializeComponents
         /// </remarks>
         protected abstract void LoadComponents();
-        
-        ////////// Information //////////
-        
-        /// <summary>
-        /// Override the reset of the input information
-        /// </summary>
-        /// <remarks>
-        /// Call every Update before UpdateInputInformation
-        /// </remarks>
-        protected abstract void OverrideInputInformationReset(InputInformation inputInformation);
-        
-        /// <summary>
-        /// Update the required input information used to drive the action
-        /// </summary>
-        /// <remarks>
-        /// Call every Update after OverrideInputInformationReset
-        /// </remarks>
-        protected abstract void UpdateInputInformation(InputInformation inputInformation);
         
         ////////////////////////////////////////////
         ////////// MonoBehaviour Callback //////////
@@ -134,9 +114,6 @@ namespace CharacterMechanism.Normal.Mechanism
 
         protected virtual void Update()
         {
-            _inputInformation.Reset();
-            OverrideInputInformationReset(_inputInformation);
-            UpdateInputInformation(_inputInformation);
             if ( !AttemptToTriggerActionTransition() )
             {
                 AttemptToTransitToNextActionState();
@@ -157,7 +134,7 @@ namespace CharacterMechanism.Normal.Mechanism
             _currentActionState = _startActionState;
             if ( !_currentActionState )
             {
-                Debug.LogError("There is no start action state!");
+                Debug.LogError("There is no start action state!", gameObject);
                 enabled = false;
             }
         }
@@ -210,7 +187,7 @@ namespace CharacterMechanism.Normal.Mechanism
             _currentActionState.BeginAction(this, _inputInformation);
             if ( _shouldDisplayTransition )
             {
-                Debug.Log(_previousActionState.GetType().Name + " --> " + _currentActionState.GetType().Name);
+                Debug.Log(_previousActionState.GetType().Name + " --> " + _currentActionState.GetType().Name, gameObject);
             }
         }
     }

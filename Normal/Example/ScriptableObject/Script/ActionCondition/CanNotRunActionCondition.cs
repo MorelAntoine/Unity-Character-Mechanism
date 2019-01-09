@@ -6,7 +6,7 @@ namespace CharacterMechanism.Normal.Example
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Example action condition for a detection of not running
+    /// Example of action condition for a detection of not running
     /// </summary>
     [CreateAssetMenu(menuName = "CharacterMechanism/Example/ActionCondition/CanNotRun")]
     public sealed class CanNotRunActionCondition : AActionCondition

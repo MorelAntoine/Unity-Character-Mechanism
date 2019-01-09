@@ -1,4 +1,4 @@
-﻿using CharacterMechanism.Normal.Mechanism;
+﻿using CharacterMechanism.Normal.System;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,11 +6,11 @@ namespace CharacterMechanism.Normal.Editor
 {
     /// <inheritdoc/>
     /// <summary>
-    /// Custom editor for the ACharacterMechanism script and his children
+    /// Custom editor for the ACharacterSystem script and his children
     /// </summary>
     [CanEditMultipleObjects]
-    [CustomEditor(typeof(ACharacterMechanism), true)]
-    public class ACharacterMechanismEditor : UnityEditor.Editor
+    [CustomEditor(typeof(ACharacterSystem), true)]
+    public class ACharacterSystemEditor : UnityEditor.Editor
     {
         ///////////////////////////////
         ////////// Attribute //////////
@@ -64,7 +64,7 @@ namespace CharacterMechanism.Normal.Editor
         ////////// Draw //////////
 
         /// <summary>
-        /// Draw the children properties of a specialize ACharacterMechanism
+        /// Draw the children properties of a specialize ACharacterSystem
         /// </summary>
         private void DrawChildrenProperties()
         {
@@ -72,7 +72,7 @@ namespace CharacterMechanism.Normal.Editor
         }
         
         /// <summary>
-        /// Draw the configuration of the ACharacterMechanism
+        /// Draw the configuration of an ACharacterSystem
         /// </summary>
         private void DrawConfiguration()
         {
@@ -84,7 +84,7 @@ namespace CharacterMechanism.Normal.Editor
         }
         
         /// <summary>
-        /// Draw the information of the ACharacterMechanism
+        /// Draw the information of an ACharacterSystem
         /// </summary>
         private void DrawInformation()
         {
@@ -97,7 +97,7 @@ namespace CharacterMechanism.Normal.Editor
         }
 
         /// <summary>
-        /// Draw the input information of the ACharacterMechanism
+        /// Draw the input information of an ACharacterSystem
         /// </summary>
         private void DrawInputInformation()
         {
@@ -120,7 +120,7 @@ namespace CharacterMechanism.Normal.Editor
         }
         
         /// <summary>
-        /// Draw the setting of the ACharacterMechanism
+        /// Draw the setting of an ACharacterSystem
         /// </summary>
         private void DrawSetting()
         {
@@ -130,7 +130,7 @@ namespace CharacterMechanism.Normal.Editor
         }
 
         /// <summary>
-        /// Draw a toolbar containing the configuration, information and setting of an ACharacterMechanism
+        /// Draw a toolbar containing the configuration, information and setting of an ACharacterSystem
         /// </summary>
         protected void DrawCharacterMechanismToolbar()
         {
