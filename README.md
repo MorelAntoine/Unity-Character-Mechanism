@@ -3,6 +3,7 @@
 Unity-Character-Mechanism is a framework aiming to facilitate the code development of a
 character in Unity. The framework comes with two version: **Light** and **Normal** ; each version
 is made for a specific need, so be sure to checkout which version fit your requirements.
+*(For more advance information about a version check there own documentation)*
 
 **Supported Character Type**: AI / Player
 
@@ -29,9 +30,9 @@ this means that if you have less than five action states, you should use it.
 
 ### Description
 
-The Normal Character Mechanism is an abstract class to inherit in order to create your own
+The Normal Character Mechanism are abstract class to inherit in order to create your own
 character mechanism. The goal of this version is to provide a basic structure of code with
-reusable conditions, states and transitions ; and standardize all the input information.
+reusable conditions, states, transitions and systems ; and standardize all the input information.
 
 All the sections of the code development of a character is divided into single part in order to
 offer the most scalable, maintainable and reusable code. 
@@ -43,7 +44,7 @@ only there mechanism will be instantiated, so the memory cost is highly reduced.
 ### Why use it
 
 The Normal Character Mechanism is advised to be used when you have multiple character mechanism
-that use the same condition, state or transition ; or when you have more than four
+that use the same condition, state, transition or system ; or when you have more than four
 action states.
 
 ## Project Information
@@ -52,4 +53,4 @@ Developed and tested under **Unity 2018.3.0f2**
 
 Made by **Antoine Morel**
 
-Version **3.0.0**
+Version **3.1.0**
