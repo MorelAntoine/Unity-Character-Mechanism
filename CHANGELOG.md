@@ -1,5 +1,24 @@
 # Changelog
 
+## 3.1.0
+
+### Add
+
+- Character Behaviour *(Generic, 2D, 3D, Generic Nav and Nav 3D)*
+
+- ACharacterSystem
+
+### New
+
+- **Behaviour** and **System** are now separated (the unification had problems with the use of generic action state)
+- Example are updated to match the new Normal Character Mechanism framework
+- New API functions for behaviour information *(InitializeInformation and LoadInformationComponents)*
+- New example *(FollowAIBehaviour)* for the Normal Character Mechanism
+
+### Remove
+
+- Character Mechanism
+
 ## 3.0.0
 
 ### Add
