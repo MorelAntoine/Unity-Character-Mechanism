@@ -87,7 +87,7 @@ Action transition are scriptable object used to define which action state requir
 
 Standardized information used to control action conditions and action states in a generic way.
 
-If you want to create your own information class, implement IInformation and add your
+If you want to create your own information class, implement **IInformation** and add your
 class as attribute *(with get property and reset method)* to the Input Information class.
 
 *For example, in order to move a player you might use Input.GetAxis to get information about which
