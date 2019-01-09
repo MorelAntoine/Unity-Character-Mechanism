@@ -30,9 +30,10 @@ this means that if you have less than five action states, you should use it.
 
 ### Description
 
-The Normal Character Mechanism are abstract class to inherit in order to create your own
-character mechanism. The goal of this version is to provide a basic structure of code with
-reusable conditions, states, transitions and systems ; and standardize all the input information.
+The Normal Character Mechanism are abstract class to inherit *(Behaviour and System)* in order to
+create your own character mechanism. The goal of this version is to provide a basic structure of
+code with reusable conditions, states, transitions and systems ; and standardize all the input
+information.
 
 All the sections of the code development of a character is divided into single part in order to
 offer the most scalable, maintainable and reusable code. 
