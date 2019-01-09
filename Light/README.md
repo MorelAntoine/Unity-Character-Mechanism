@@ -4,7 +4,7 @@ The Light Character mechanism is an abstract class to inherit in order to create
 character mechanism. The goal of this version is to provide a basic structure of code with
 a low cost in memory and less code to maintain compared to the Normal version.
 
-The Light Character Mechanism comes with five different types of Light Character Mechanism, so be
+The Light Character Mechanism comes with five different types of mechanism, so be
 sure to checkout which version fit your needs.
 
 ## Structure
