@@ -37,4 +37,4 @@ ANavLightCharacterMechanism3D
 The Light Character Mechanism is made for low complex character mechanism ;
 this means that if you have less than five action states, you should use it.
 
-Example can be founded in the Example/ folder and Screenshots in the Screenshot/ folder.
+Example can be founded in the Example/ folder and screenshots in the Screenshot/ folder.
