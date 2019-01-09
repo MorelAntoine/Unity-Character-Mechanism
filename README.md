@@ -43,8 +43,8 @@ only there mechanism will be instantiated, so the memory cost is highly reduced.
 
 ### Why use it
 
-The Normal Character Mechanism is advised to be used when you have multiple character mechanism
-that use the same condition, state, transition or system ; or when you have more than four
+The Normal Character Mechanism is advised to be used when you have multiple duplicated conditions,
+states, transitions or systems ; or when you have more than four
 action states.
 
 ## Project Information
