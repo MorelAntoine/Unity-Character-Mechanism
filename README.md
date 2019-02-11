@@ -55,3 +55,7 @@ Developed and tested under **Unity 2018.3.0f2**
 Made by **Antoine Morel**
 
 Version **3.1.0**
+
+# License
+
+LICENSE MIT
